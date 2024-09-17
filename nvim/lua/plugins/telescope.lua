@@ -50,7 +50,7 @@ return {
 		},
 		{
 			"<leader>gp",
-			"<cmd>Telescope repo cached_list<CR>",
+			"<cmd>Telescope repo list<CR>",
 			mode = { "n" },
 			desc = "Find git repositories",
 		},
@@ -98,6 +98,11 @@ return {
 		extensions = {
 			fzf = {},
 			repo = {
+				list = {
+					search_dirs = {
+						"~/git",
+					},
+				},
 				cached_list = {
 					file_ignore_patterns = { "/%.local/", "/%.cache/" },
 				},
