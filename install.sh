@@ -1,1 +1,4 @@
-# Install dotfiles in new environment
+#!/bin/bash
+
+echo "Start configuration"
+bash ./config.sh
