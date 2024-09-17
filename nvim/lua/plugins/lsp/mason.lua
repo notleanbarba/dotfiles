@@ -39,6 +39,7 @@ return {
 				"eslint_d",
 				"yamllint",
 				"luacheck",
+				"beautysh",
 			},
 		})
 	end,

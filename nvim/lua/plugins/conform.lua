@@ -74,6 +74,7 @@ return {
 				jsonc = getSharedFormatter(),
 				yaml = { "prettierd" },
 				toml = { "taplo" },
+				sh = { "beautysh" },
 			},
 			notify_on_error = true,
 			format_on_save = {},
