@@ -35,6 +35,8 @@ done
 # Install windows configs
 if [ $(systemd-detect-virt) == 'wsl' ];then
     echo "WSL instance detected"
+    rm -f $CONFIG/alacritty/alacritty.toml
+    cp $PWD/alacritty/alacritty.toml $CONFIG/alacritty/alacritty.toml
     mkdir /mnt/c/Users/leanb/AppData/Roaming/alacritty
     cp $PWD/alacritty/windows.toml /mnt/c/Users/leanb/AppData/Roaming/alacritty/alacritty.toml
     echo "Successful config [file]: alacritty for windows"
