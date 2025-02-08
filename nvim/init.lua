@@ -19,6 +19,7 @@ set.softtabstop = 2
 set.shiftwidth = 2
 set.expandtab = true
 set.cmdheight = 1
+set.laststatus = 3
 
 require("config.lazy")
 vim.cmd("colorscheme kanagawa-wave")

@@ -104,6 +104,17 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias v="nvim"
 
+alias_python() {
+  if [[ -z $VIRTUAL_ENV ]]; then
+    alias python="python3.11"
+  fi
+
+  if [[ -n $VIRTUAL_ENV ]]; then
+    unalias python >/dev/null 2>/dev/null
+  fi
+}
+
+
 export BROWSER=wslview 
 export EDITOR="nvim"
 export PATH="$PATH:/snap/bin:$HOME/.local/bin"
@@ -113,3 +124,60 @@ unsetopt beep
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   tmux attach || tmux 
 fi
+
+# =============================================
+# Auto activate venv
+auto_activate_venv() {
+  local current_dir="$PWD"
+  local venv_dir
+
+  # Search for a .venv directory in the current directory or any parent directories
+  while [[ -n "$current_dir" ]]; do
+
+    if [[ -d "$current_dir/.venv" ]]; then
+      venv_dir="$current_dir/.venv"
+      break
+    fi
+    current_dir="${current_dir%/*}"
+  done
+
+  # If a .venv directory was found, activate it
+  if [[ -n "$venv_dir" ]]; then
+
+    if [[ -n "$VIRTUAL_ENV" && "$VIRTUAL_ENV" != "$venv_dir"* ]]; then
+      deactivate
+
+      source "$venv_dir/bin/activate"
+    elif [[ -z "$VIRTUAL_ENV" ]]; then
+      source "$venv_dir/bin/activate"
+      
+    fi
+    
+  # If no .venv directory was found, deactivate any active virtual environment
+  else
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+      deactivate
+    fi
+  fi
+}
+
+# Call the auto_activate_venv function when changing directories
+autoload -U add-zsh-hook
+add-zsh-hook chpwd auto_activate_venv
+add-zsh-hook chpwd alias_python
+auto_activate_venv
+alias_python
+
+# =============================================
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
+
+# Export all environment variables in .env file
+set -o allexport
+source ~/.env
+set +o allexport
