@@ -75,6 +75,7 @@ return {
 				yaml = { "prettierd" },
 				toml = { "taplo" },
 				sh = { "beautysh" },
+				python = { "black" },
 			},
 			notify_on_error = true,
 			format_on_save = {},

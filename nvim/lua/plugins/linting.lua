@@ -77,10 +77,19 @@ return {
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave", "TextChanged" }, {
 			group = lint_augroup,
 			callback = function()
-				lint.try_lint()
+				if vim.bo.filetype ~= "python" then
+					lint.try_lint()
+				end
 			end,
 		})
 
+		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
+			pattern = "*.py",
+			group = lint_augroup,
+			callback = function()
+				lint.try_lint()
+			end,
+		})
 		lint.linters_by_ft = {
 			javascript = sharedLinter,
 			typescript = sharedLinter,
@@ -105,6 +114,17 @@ return {
 			parser = require("lint.parser").from_errorformat("%f:%l:%c: %m", {
 				source = "luacheck",
 			}),
+		}
+
+		lint.linters.pylint.cmd = "python"
+		lint.linters.pylint.args = {
+			"-m",
+			"pylint",
+			"-f",
+			"json",
+			function()
+				return vim.api.nvim_buf_get_name(0)
+			end,
 		}
 	end,
 }
