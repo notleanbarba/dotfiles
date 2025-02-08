@@ -26,7 +26,7 @@ return {
 				},
 			},
 			limits = {
-				completion_manual_timeout = 1,
+				completion_manual_timeout = 2,
 			},
 		}
 
