@@ -19,6 +19,8 @@ return {
 				"python",
 				"robots",
 				"yaml",
+				"sql",
+				"terraform",
 			},
 			sync_install = false,
 			highlight = { enable = true },

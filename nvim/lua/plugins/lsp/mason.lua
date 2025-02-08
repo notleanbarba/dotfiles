@@ -27,6 +27,11 @@ return {
 				"tailwindcss",
 				"cssls",
 				"taplo",
+				"pyright",
+				"dockerls",
+				"nginx_language_server",
+				"sqlls",
+				"terraformls",
 			},
 		})
 
@@ -40,6 +45,8 @@ return {
 				"yamllint",
 				"luacheck",
 				"beautysh",
+				"black",
+				"pylint",
 			},
 		})
 	end,
