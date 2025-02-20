@@ -7,12 +7,22 @@ return {
 		-- add any opts here
 		-- for example
 		provider = "openai",
+		auto_suggestions_provider = "claude",
 		openai = {
 			endpoint = "https://api.openai.com/v1",
-			model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
+			model = "gpt-4o-mini", -- your desired model (or use gpt-4o, etc.)
 			timeout = 30000, -- timeout in milliseconds
 			temperature = 0, -- adjust if needed
 			max_tokens = 4096,
+		},
+		claude = {
+			endpoint = "https://api.anthropic.com",
+			model = "claude-3-5-sonnet-20241022",
+			temperature = 0,
+			max_tokens = 4096,
+		},
+		behaviour = {
+			auto_suggestions = false, -- Experimental stage
 		},
 	},
 	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
@@ -26,7 +36,6 @@ return {
 		"nvim-telescope/telescope.nvim", -- for file_selector provider telescope
 		"ms-jpq/coq_nvim", -- autocompletion for avante commands and mentions
 		"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-		"zbirenbaum/copilot.lua", -- for providers='copilot'
 		{
 			-- support for image pasting
 			"HakonHarnes/img-clip.nvim",
