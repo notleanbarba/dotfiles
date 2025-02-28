@@ -32,6 +32,7 @@ return {
 				"nginx_language_server",
 				"sqlls",
 				"terraformls",
+				"ansiblels",
 			},
 		})
 

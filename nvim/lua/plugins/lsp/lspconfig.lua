@@ -62,8 +62,16 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-		local servers =
-			{ "ts_ls", "tailwindcss", "pyright", "dockerls", "nginx_language_server", "sqlls", "terraformls" }
+		local servers = {
+			"ts_ls",
+			"tailwindcss",
+			"pyright",
+			"dockerls",
+			"nginx_language_server",
+			"sqlls",
+			"terraformls",
+			"ansiblels",
+		}
 		for _, lsp in ipairs(servers) do
 			lspconfig[lsp].setup(require("coq").lsp_ensure_capabilities({
 				on_attach = on_attach,
