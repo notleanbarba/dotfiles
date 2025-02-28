@@ -2,7 +2,9 @@
 
 CONFIG=$HOME/.config
 
-apps=("nvim:1:d:$CONFIG/nvim" "alacritty:2:d:$CONFIG/alacritty:x:d:/mnt/c/Users/leanb/AppData/Roaming/alacritty" "tmux:1:f:$HOME/.tmux.conf:tmux.conf" "zsh:1:f:$HOME/.zshrc:zshrc")
+mkdir $CONFIG
+
+apps=("nvim:1:d:$CONFIG/nvim" "alacritty:2:d:$CONFIG/alacritty:x:d:/mnt/c/Users/me/AppData/Roaming/alacritty" "tmux:1:f:$HOME/.tmux.conf:tmux.conf" "zsh:1:f:$HOME/.zshrc:zshrc")
 
 # Delete old configs
 echo "Deleting old configs"
@@ -35,9 +37,9 @@ done
 # Install windows configs
 if [ $(systemd-detect-virt) == 'wsl' ];then
     echo "WSL instance detected"
-    rm -f $CONFIG/alacritty/alacritty.toml
-    cp $PWD/alacritty/alacritty.toml $CONFIG/alacritty/alacritty.toml
-    mkdir /mnt/c/Users/leanb/AppData/Roaming/alacritty
-    cp $PWD/alacritty/windows.toml /mnt/c/Users/leanb/AppData/Roaming/alacritty/alacritty.toml
+    mkdir /mnt/c/Users/me/AppData/Roaming/alacritty
+    cp $PWD/alacritty/windows.toml /mnt/c/Users/me/AppData/Roaming/alacritty/windows.toml
+    cp $PWD/alacritty/alacritty.toml /mnt/c/Users/me/AppData/Roaming/alacritty/alacritty.toml
+    printf "\n[general]\nimport = ['.\\windows.toml']" >> /mnt/c/Users/me/AppData/Roaming/alacritty/alacritty.toml
     echo "Successful config [file]: alacritty for windows"
 fi
