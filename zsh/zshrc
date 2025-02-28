@@ -117,7 +117,7 @@ alias_python() {
 
 export BROWSER=wslview 
 export EDITOR="nvim"
-export PATH="$PATH:/snap/bin:$HOME/.local/bin"
+export PATH="$PATH:/snap/bin:$HOME/.local/bin:/usr/bin/python3.11"
 
 unsetopt beep
 
@@ -181,3 +181,6 @@ complete -o nospace -C /usr/bin/terraform terraform
 set -o allexport
 source ~/.env
 set +o allexport
+
+# Source cargo
+. "$HOME/.cargo/env"
