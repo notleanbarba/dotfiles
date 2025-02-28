@@ -1,0 +1,28 @@
+#!/bin/bash
+
+## Install oh-my-zsh
+sudo apt install zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+## Install Python
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt install python3.11-full python3.12-full python3.12-venv
+
+## Install NodeJS
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+\. "$HOME/.nvm/nvm.sh"
+nvm install 22
+
+## Install Luarocks
+sudo apt install luarocks
+luarocks install luacheck
+
+## Install Rust and Cargo
+curl https://sh.rustup.rs -sSf | sh
+
+## Install Neovim
+sudo apt install gcc make python3-neovim fzf ripgrep fd-find libssl-dev luajit
+sudo snap install nvim --classic
+
+## Clean APT
+sudo apt autoremove
