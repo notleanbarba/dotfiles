@@ -1,5 +1,2 @@
+[terminal]
 shell = "ubuntu"
-
-import = [
-    "Z:\\home\\leanbarba\\.config\\alacritty\\alacritty.toml"
-]
