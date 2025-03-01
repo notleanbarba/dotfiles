@@ -5,8 +5,10 @@ sudo apt install zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 ## Install Python
-sudo add-apt-repository ppa:deadsnakes/ppa
-sudo apt install python3.11-full python3.12-full python3.12-venv
+sudo add-apt-repository ppa:deadsnakes/ppa -y
+sudo apt -y install python3.11-full python3.12-full python3.12-venv
+python -m ensurepip
+pythom -m pip install requests
 
 ## Install NodeJS
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
@@ -14,14 +16,19 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 nvm install 22
 
 ## Install Luarocks
-sudo apt install luarocks
+sudo apt -y install luarocks
 luarocks install luacheck
 
 ## Install Rust and Cargo
-curl https://sh.rustup.rs -sSf | sh
+curl https://sh.rustup.rs -sSf | sh -y
+
+## Install Ansible and Terraform
+sudo apt -y install terraform
+pip3 install --upgrade --user ansible ansible-lint
+ansible-galaxy collection install ansible.posix community.docker
 
 ## Install Neovim
-sudo apt install gcc make python3-neovim fzf ripgrep fd-find libssl-dev luajit
+sudo apt -y install gcc make python3-neovim fzf ripgrep fd-find libssl-dev luajit
 sudo snap install nvim --classic
 
 ## Clean APT
