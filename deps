@@ -1,13 +1,15 @@
 #!/bin/bash
 
+## Install Tmux
+sudo apt -y install tmux
+
 ## Install oh-my-zsh
-sudo apt install zsh
+sudo apt -y install zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 ## Install Python
 sudo add-apt-repository ppa:deadsnakes/ppa -y
-sudo apt -y install python3.11-full python3.12-full python3.12-venv
-python -m ensurepip
+sudo apt -y install python3.12-full python3.12-venv python3-pip
 pythom -m pip install requests
 
 ## Install NodeJS
@@ -28,8 +30,8 @@ pip3 install --upgrade --user ansible ansible-lint
 ansible-galaxy collection install ansible.posix community.docker
 
 ## Install Neovim
-sudo apt -y install gcc make python3-neovim fzf ripgrep fd-find libssl-dev luajit
 sudo snap install nvim --classic
+sudo apt -y install gcc make python3-neovim fzf ripgrep fd-find libssl-dev luajit
 
 ## Clean APT
 sudo apt autoremove
