@@ -71,6 +71,7 @@ return {
 			"sqlls",
 			"terraformls",
 			"ansiblels",
+			"powershell_es",
 		}
 		for _, lsp in ipairs(servers) do
 			lspconfig[lsp].setup(require("coq").lsp_ensure_capabilities({

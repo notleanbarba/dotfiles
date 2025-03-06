@@ -33,6 +33,7 @@ return {
 				"sqlls",
 				"terraformls",
 				"ansiblels",
+				"powershell_es",
 			},
 		})
 
