@@ -39,3 +39,11 @@ vim.keymap.set("n", "<leader>yy", '"+yy')
 --Paste from global clipboard
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p')
 vim.keymap.set({ "n", "v" }, "<leader>P", '"+P')
+
+--Extend ansible patterns
+vim.filetype.add({
+	pattern = {
+		[".*playbook.*%.yml"] = "yaml.ansible",
+		[".*playbook.*%.yaml"] = "yaml.ansible",
+	},
+})

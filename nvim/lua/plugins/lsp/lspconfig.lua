@@ -70,15 +70,16 @@ return {
 			"nginx_language_server",
 			"sqlls",
 			"terraformls",
-			"ansiblels",
 			"powershell_es",
 		}
+
 		for _, lsp in ipairs(servers) do
 			lspconfig[lsp].setup(require("coq").lsp_ensure_capabilities({
 				on_attach = on_attach,
 				capabilities = capabilities,
 			}))
 		end
+
 		lspconfig["biome"].setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
@@ -139,6 +140,12 @@ return {
 					},
 				},
 			},
+		}))
+
+		lspconfig["ansiblels"].setup(require("coq").lsp_ensure_capabilities({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			filetypes = { "yaml.ansible" },
 		}))
 	end,
 }
