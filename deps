@@ -33,5 +33,8 @@ ansible-galaxy collection install ansible.posix community.docker
 sudo snap install nvim --classic
 sudo apt -y install gcc make python3-neovim fzf ripgrep fd-find libssl-dev luajit
 
+## Install AWS CLI
+sudo snap install aws-cli --classic
+
 ## Clean APT
 sudo apt autoremove
